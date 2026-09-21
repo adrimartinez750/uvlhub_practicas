@@ -38,6 +38,10 @@ jobs:
         pip install -e ./rosemary
     - name: Check outdated dependencies
       run: pip list --outdated
+    - name: Audit dependencies (pip-audit)
+      run: |
+        pip install pip-audit
+        pip-audit
     - name: Run tests with coverage
       run: |
         coverage run -m pytest app/features/ --ignore-glob='*selenium*'
